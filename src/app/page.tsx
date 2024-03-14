@@ -70,8 +70,8 @@ export default function HomePage() {
             <h4 className="mb-0 share-title-truncate" style={{
               display: "-webkit-box",
               maxWidth: "100%",
-              lineClamp: "2",
-              boxOrient: "vertical",
+              WebkitLineClamp: "2",
+              WebkitBoxOrient: "vertical",
               overflow: "hidden",
           }}>{share.title}</h4>
           </Link>
@@ -79,8 +79,8 @@ export default function HomePage() {
           <p className="mb-auto" style={{
             display: "-webkit-box",
             maxWidth: "100%",
-            lineClamp: "4",
-            boxOrient: "vertical",
+            WebkitLineClamp: "4",
+            WebkitBoxOrient: "vertical",
             overflow: "hidden",
           }}>{share.description}</p>
         </div>
