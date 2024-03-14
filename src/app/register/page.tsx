@@ -4,22 +4,22 @@ import { signIn, useSession } from "@/_providers/SessionProvider";
 import { Session } from "@/_types/auth";
 import { useMutation } from "@apollo/client";
 import { redirect } from "next/navigation";
-import { FormEvent, useEffect, useState } from "react";
+import { FormEvent, useEffect } from "react";
 import { toast } from "react-toastify";
 
 export default function RegisterPage() {
   const session = useSession();
-  if (session.user) return redirect("/");
-
   const [register, { data: registerData }] = useMutation<{
     register: Session;
   }>(gql_register);
+
   useEffect(() => {
     if (!registerData) return;
     const user = registerData.register;
     signIn(user);
     toast.success("Your account creted");
   }, [registerData]);
+
   async function onSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault()
     const formData = new FormData(event.currentTarget)
@@ -33,6 +33,7 @@ export default function RegisterPage() {
       }
     });
   }
+  if (session.user) return redirect("/");
   return <>
     <div className="d-flex align-items-center py-4" style={{
       height: "100vh"

@@ -10,11 +10,12 @@ import { toast } from "react-toastify";
 export default function SharePage() {
     const router = useRouter();
     const session = useSession();
-    if (!session.user) return redirect("/");
 
     const [createShare, { data: createShareData }] = useMutation<{
         createShare: Share;
     }>(gql_createShare);
+    
+
     useEffect(() => {
         if (!createShareData) return;
         const share = createShareData.createShare;
@@ -33,6 +34,7 @@ export default function SharePage() {
             }
         });
     }
+    if (!session.user) return redirect("/");
     return <>
         <div className="d-flex align-items-center py-4" style={{
             height: "100vh"
