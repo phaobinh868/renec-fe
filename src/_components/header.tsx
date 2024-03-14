@@ -37,7 +37,7 @@ const Header = () => {
                 <div className="container">
                     <Link className="navbar-brand" href="/">Funny Movies</Link>
                     {session?.user ? <div className='d-flex align-items-center'>
-                        <div className='text-white me-2'>Welcome, {session.user.email}</div>
+                        <div className='text-white me-2 d-none d-md-block '>Welcome, {session.user.email}</div>
                         <Link className="btn btn-primary me-2" href="/share">Share a Movie</Link>
                         <button className="btn btn-outline-secondary" onClick={() => signOut()}>Logout</button>
                     </div> : <form className="d-flex" onSubmit={onSubmit}>

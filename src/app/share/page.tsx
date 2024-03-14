@@ -34,7 +34,7 @@ export default function SharePage() {
         });
     }
     return <>
-        <div className="d-flex align-items-center py-4 bg-body-tertiary " style={{
+        <div className="d-flex align-items-center py-4" style={{
             height: "100vh"
         }}>
             <form className="m-auto p-3 card" onSubmit={onSubmit}>

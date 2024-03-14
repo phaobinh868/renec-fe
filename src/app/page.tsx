@@ -58,17 +58,33 @@ export default function HomePage() {
       <div key={share._id} className="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
         <div className="col-md-5">
           <Link href={`https://www.youtube.com/watch?v=${share.video_id}`} target="_blank">
-            <Image src={share.thumbnail as string} className="share-thumbnail" alt={share.title as string} width={500} height={500} />
+            <Image src={share.thumbnail as string} style={{
+              color: "transparent",
+              width: "100%",
+              height: "auto"
+            }} alt={share.title as string} width={500} height={500} />
           </Link>
         </div>
         <div className="col-md-7 p-3 d-flex flex-column position-static">
           <Link href={`https://www.youtube.com/watch?v=${share.video_id}`} target="_blank">
-            <h4 className="mb-0 share-title-truncate">{share.title}</h4>
+            <h4 className="mb-0 share-title-truncate" style={{
+              display: "-webkit-box",
+              maxWidth: "100%",
+              lineClamp: "2",
+              boxOrient: "vertical",
+              overflow: "hidden",
+          }}>{share.title}</h4>
           </Link>
           <div className="mb-0 text-body-secondary"><i>Shared by: {share.user?.name}</i></div>
-          <p className="mb-auto share-description-truncate">{share.description}</p>
+          <p className="mb-auto" style={{
+            display: "-webkit-box",
+            maxWidth: "100%",
+            lineClamp: "4",
+            boxOrient: "vertical",
+            overflow: "hidden",
+          }}>{share.description}</p>
         </div>
       </div>)}
-    {total?<Pagination total={total} page={query.page} limit={query.limit} onChange={(page: number) => setQuery({ ...query, page: page })} />:null}
+    {total ? <Pagination total={total} page={query.page} limit={query.limit} onChange={(page: number) => setQuery({ ...query, page: page })} /> : null}
   </>
 }

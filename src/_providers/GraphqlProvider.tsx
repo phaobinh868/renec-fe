@@ -101,6 +101,14 @@ const refreshToken = async () => {
 const client = new ApolloClient({
     link: ApolloLink.from([errorLink, authLink, httpLink]),
     cache: new InMemoryCache(),
+    defaultOptions: {
+        query: {
+          errorPolicy: 'all',
+        },
+        mutate: {
+          errorPolicy: 'ignore',
+        },
+      },
 });
 interface Props {
     children: ReactNode;
